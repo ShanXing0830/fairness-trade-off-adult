@@ -18,10 +18,10 @@ We explore several fairness-aware strategies:
 - Threshold sweeping to visualize the accuracy–fairness tradeoff
 - Reweighing during training
 - Group-specific threshold calibration
-
-Both models achieve strong predictive performance (AUC ≈ 0.90+), but exhibit demographic disparities under a default threshold.  
-Fairness mitigation methods can substantially reduce disparity with limited accuracy loss.
-
+  
+- Both Logistic Regression and the PyTorch MLP achieve strong predictive performance on the Adult dataset (AUC around ~0.9).
+- Under the default decision threshold, demographic disparity is observed across groups (non-zero SPD / DI < 1).
+- Fairness mitigation (reweighing and threshold calibration) reduces disparity with a limited impact on accuracy.
 ## Accuracy–Fairness Tradeoff
 
 ![Accuracy–Fairness Tradeoff](figures/tradeoff.png)
