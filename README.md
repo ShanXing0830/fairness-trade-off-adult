@@ -1,6 +1,6 @@
 # Fairness–Performance Tradeoff on Adult Dataset (Logistic vs MLP)
 
-This project implements a reproducible ML pipeline on the Adult (Census Income) dataset to study the fairness–performance tradeoff across model capacities.
+This project implements a reproducible ML pipeline on the Adult (Census Income) dataset to study the fairness–performance tradeoff across model capacities, and explores fairness–performance tradeoffs in machine learning models.
 
 ## What’s inside
 - Models:
