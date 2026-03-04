@@ -58,6 +58,7 @@ logistic_model.fit(X_train, y_train)
 y_pred = logistic_model.predict(X_test)
 y_proba = logistic_model.predict_proba(X_test)[:, 1]
 
+print("\n=== Logistic Regression Results ===")
 print("Accuracy:", accuracy_score(y_test, y_pred))
 print("AUC:", roc_auc_score(y_test, y_proba))
 print("F1:", f1_score(y_test, y_pred))
