@@ -15,9 +15,7 @@ import matplotlib.pyplot as plt
 from pathlib import Path
 
 
-# -------------------------
 # Utils
-# -------------------------
 def reweighing_sample_weights(y, a):
     """
     Reweighing (Kamiran & Calders): w(y,a) = P(y)*P(a)/P(y,a)
@@ -100,7 +98,7 @@ numeric_features = [
     "capital-gain",
     "capital-loss",
     "hours-per-week"
-]
+                   ]
 
 categorical_features = [col for col in X.columns if col not in numeric_features]
 
@@ -111,12 +109,11 @@ preprocessor = ColumnTransformer(
     transformers=[
         ("num", StandardScaler(), numeric_features),
         ("cat", OneHotEncoder(handle_unknown="ignore"), categorical_features)
-    ]
-)
+                 ])
 
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.3, random_state=42, stratify=y
-)
+                                                   )
 
 print("Train:", X_train.shape)
 print("Test:", X_test.shape)
@@ -136,7 +133,7 @@ female_mask = (sex_test == "Female")
 logistic_model = Pipeline(steps=[
     ("preprocessor", preprocessor),
     ("clf", LogisticRegression(max_iter=2000))
-])
+                                ])
 
 logistic_model.fit(X_train, y_train)
 
@@ -156,7 +153,7 @@ w_train = reweighing_sample_weights(y_train.values, a_train)
 logistic_rw = Pipeline(steps=[
     ("preprocessor", preprocessor),
     ("clf", LogisticRegression(max_iter=2000))
-])
+                             ])
 
 
 logistic_rw.fit(X_train, y_train, clf__sample_weight=w_train)
@@ -216,7 +213,7 @@ class MLP(nn.Module):
             nn.Linear(64, 32),
             nn.ReLU(),
             nn.Linear(32, 1)
-        )
+                                )
 
     def forward(self, x):
         return self.net(x)
