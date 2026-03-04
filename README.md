@@ -1,27 +1,33 @@
-# Fairness–Performance Tradeoff on Adult Dataset (Logistic vs MLP)
+# Accuracy–Fairness Tradeoff on the Adult Dataset
 
-This project implements a reproducible ML pipeline on the Adult (Census Income) dataset to study the fairness–performance tradeoff across model capacities, and explores fairness–performance tradeoffs in machine learning models.
+This project studies the tradeoff between predictive performance and algorithmic fairness using the Adult (Census Income) dataset.
 
-## What’s inside
-- Models:
-  - Logistic Regression (scikit-learn)
-  - MLP (PyTorch, 2 hidden layers)
-- Fairness metrics (sex as sensitive attribute):
-  - Statistical Parity Difference (SPD)
-  - Equal Opportunity Difference (EOD)
-  - Disparate Impact (DI)
-- Mitigation:
-  - Global threshold sweep to visualize accuracy–fairness tradeoff
-  - Group-specific threshold calibration (male/female) via grid search
+Two models are compared:
 
-## Results (example)
-- Both models achieve strong predictive performance (AUC > 0.90).
-- Under a standard 0.5 threshold, both models show demographic disparity (SPD > 0.15, DI ~ 0.3).
-- Group-specific threshold calibration can reduce SPD to ~0 with limited accuracy degradation.
+- Logistic Regression (scikit-learn)
+- MLP neural network (PyTorch)
 
-## How to run
+Fairness is evaluated using:
+
+- Statistical Parity Difference (SPD)
+- Equal Opportunity Difference (EOD)
+- Disparate Impact (DI)
+
+We explore several fairness-aware strategies:
+
+- Threshold sweeping to visualize the accuracy–fairness tradeoff
+- Reweighing during training
+- Group-specific threshold calibration
+
+Both models achieve strong predictive performance (AUC ≈ 0.90+), but exhibit demographic disparities under a default threshold.  
+Fairness mitigation methods can substantially reduce disparity with limited accuracy loss.
+
+## Accuracy–Fairness Tradeoff
+
+![Accuracy–Fairness Tradeoff](figures/tradeoff.png)
+
+## Run
+
 ```bash
 pip install -r requirements.txt
 python src/fairness_adult.py
-
-![Accuracy–Fairness Tradeoff](figures/tradeoff.png)
